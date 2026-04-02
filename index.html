@@ -1,103 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <!-- Page configuration. -->
+    <!-- Content encoding -->
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=yes"/>
-    <title></title>
-    <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="manifest" href="json/manifest.webmanifest">
-    <!-- Application base modules. -->
-    <script type="text/javascript" src="lib/runtimeData.js"></script>
-    <script type="text/javascript">
-        window.onload = () => {
-            document.title = runtimeData.productName;
-            if (runtimeData.debugMode == true) {
-                let erudaScript = document.createElement("script");
-                erudaScript.src = "lib/eruda.js";
-                erudaScript.onload = () => {
-                    eruda.init();
-                };
-                document.body.appendChild(erudaScript);
-            }
-        }
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=yes" />
+
+    <!-- Page info and stylesheets -->
+    <title>Find 100 meme</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(100915882, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+
+   // Функция для приёма событий из Unity
+   function sendMetricEvent(eventName, params) {
+       try {
+           ym(100532145, "reachGoal", eventName, params ? JSON.parse(params) : {});
+           console.log("Событие отправлено в Яндекс.Метрику:", eventName, params);
+       } catch (e) {
+           console.error("Ошибка при отправке события в Яндекс.Метрику:", e);
+       }
+   }
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/100532145" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
-    <!-- Game canvas. -->
+    <!-- Unity canvas -->
     <div id="unity-container">
         <canvas id="unity-canvas" tabindex="-1"></canvas>
         <div id="unity-loading-bar">
-            <div id="version-container">
-                <img src="img/version_product_32.png" />
-                <div id="version-product">1.0.0</div>
-                <div id="version-separator"></div>
-                <img src="img/version_sdk_32.png" />
-                <div id="version-sdk">1.0.0</div>
-            </div>
             <div id="unity-logo"></div>
             <div id="unity-progress-bar-empty">
                 <div id="unity-progress-bar-full"></div>
             </div>
-            <div id="three-canvas"></div>
         </div>
     </div>
-    <!-- Banner advertisement. -->
-    <div id="banner-container"></div>
-    <!-- Version labels. -->
-    <script type="text/javascript">
-        document.body.style.backgroundImage = "url('img/" + runtimeData.backgroundTextureName + "')";
-        document.getElementById("unity-logo").style.backgroundImage = "url('img/" + runtimeData.iconTextureName + "')";
-        document.getElementById("version-product").innerHTML = runtimeData.productVersion;
-        document.getElementById("version-sdk").innerHTML = runtimeData.sdkVersion;
-    </script>
-    <!-- Company logo. -->
-    <script type="text/javascript" src="lib/threeImport.js"></script>
-    <!-- Service worker. -->
-    <script type="text/javascript">
-        window.addEventListener("load", function () {
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("lib/serviceWorker.js");
-            }
-        });
-    </script>
-    <!-- Memory diagnostics. -->
-    <link rel="stylesheet" href="css/diagnostics.css">
-    <script src="lib/diagnostics.js"></script>
-    <script type="text/javascript">
-        let diagnosticsIcon = document.createElement('img');
-        diagnosticsIcon.id = 'diagnostics-icon';
-        diagnosticsIcon.src = 'img/diagnostics_128x128.png';
-        diagnosticsIcon.style.display = "none";
-        document.body.appendChild(diagnosticsIcon);
-    </script>
-    <!-- Application interface. -->
-    <script type="text/javascript" src="lib/application.js"></script>
-    <script type="text/javascript" src="lib/aspectRatio.js"></script>
-    <script type="text/javascript" src="lib/commonFixes.js"></script>
-    <script type="text/javascript">
-        async function initializeWrapper() {
-            if (runtimeData.wrapperScript == "") {
-                console.error("Wrapper script is not valid.");
-                application.initialize();
-                return;
-            }
-            const wrapper = await import("./lib/" + runtimeData.wrapperScript);
-            if (typeof wrapper.initialize === 'function') {
-                // Wrapper initialization.
-                wrapper.initialize(() => {
-                    // Application initialization
-                    // on wrapper ready callback.
-                    application.initialize();
-                });
-            } else {
-                console.error("Initialize method not found in the module.");
-                application.initialize();
-            }
-        }
-        initializeWrapper();
-    </script>
+
+
+    <!-- Unity loader script -->
+    <script src="unityApp.js"></script>
 </body>
 </html>
