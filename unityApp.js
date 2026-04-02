@@ -178,12 +178,12 @@ const unityApp = {
         const progressBarFull = document.querySelector("#unity-progress-bar-full");
 
         const buildUrl = "Build";
-        const loaderUrl = buildUrl + "/24e530aca6e139f9aae0d7b23a31aff8.loader.js";
+        const loaderUrl = buildUrl + "/8e4f2c9468c45cef078fb8db19deb352.loader.js";
         const config = {
             arguments: [],
-            dataUrl: buildUrl + "/b0d78700200af135f4e9b2ce862e335d.data.unityweb",
+            dataUrl: buildUrl + "/ed0b0e7c9a289ba1f703bcdd1c907f99.data.unityweb",
             frameworkUrl: buildUrl + "/f089cc599dd0c8bcde14802275d5b134.framework.js.unityweb",
-            codeUrl: buildUrl + "/dde72e15b2cbf1bf7ea307ace7c31b81.wasm.unityweb",
+            codeUrl: buildUrl + "/95708f91a6932b9a52678791ddde83bd.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
             companyName: "DefaultCompany",
             productName: "Find 100 meme",
