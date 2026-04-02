@@ -181,7 +181,7 @@ const unityApp = {
         const loaderUrl = buildUrl + "/24e530aca6e139f9aae0d7b23a31aff8.loader.js";
         const config = {
             arguments: [],
-            dataUrl: buildUrl + "/54a357c78912f1d05a11d18aa41b5a2e.data.unityweb",
+            dataUrl: buildUrl + "/b0d78700200af135f4e9b2ce862e335d.data.unityweb",
             frameworkUrl: buildUrl + "/f089cc599dd0c8bcde14802275d5b134.framework.js.unityweb",
             codeUrl: buildUrl + "/dde72e15b2cbf1bf7ea307ace7c31b81.wasm.unityweb",
             streamingAssetsUrl: "StreamingAssets",
